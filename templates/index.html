@@ -24,20 +24,6 @@
         <button type="submit">Find Nearby Pokémon</button>
     </form>
 
-    {% if pokemon_data %}
-        <div class="pokemon-result">
-            <h2>Pokémon Found:</h2>
-            <p><strong>Name:</strong> {{ pokemon_data.name }}</p>
-            <p><strong>Type:</strong> {{ pokemon_data.type }}</p>
-            {% if pokemon_data.height and pokemon_data.weight %}
-                <p><strong>Height:</strong> {{ pokemon_data.height }} m</p>
-                <p><strong>Weight:</strong> {{ pokemon_data.weight }} kg</p>
-            {% endif %}
-            <img src="{{ pokemon_data.image_url }}" alt="Image of {{ pokemon_data.name }}" class="pokemon-image">
-        </div>
-    {% elif pokemon_data is none and request.query_params.get('name') %}
-        <p class="error">Pokémon not found. Please try again.</p>
-    {% endif %}
     {% if random_pokemon %}
         <div class="random-pokemon" id="random-pokemon">
             <h2>{{ random_pokemon.name }}</h2>
