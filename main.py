@@ -23,7 +23,7 @@ async def health_check():
 async def index(
     request: Request,
     name: str = Query(None, description="Name of the Pokémon"),
-    height: float = Query(None, description="Height of the Pokémon in meters"),
+    height: float = Query(None, description="Height of the Pokémon in centimeters"),
     weight: float = Query(None, description="Weight of the Pokémon in kilograms"),
     tolerance: float = Query(0.1, description="Tolerance percentage for matching height and weight")
 ):
@@ -48,7 +48,7 @@ async def index(
                 
     if height is not None and weight is not None:
         try:
-            nearby_pokemon = find_pokemon_body(height, weight, tolerance)
+            nearby_pokemon = find_pokemon_body(height, weight, tolerance)  # Height is now in centimeters
             if nearby_pokemon:
                 random_pokemon = random.choice(nearby_pokemon)
                 # Fetch image URL for the randomly selected Pokémon

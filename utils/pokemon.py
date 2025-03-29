@@ -24,7 +24,7 @@ def find_pokemon_body(height: float, weight: float, tolerance: float = 0.1):
     """
     Find Pokémon with height and weight close to the given values.
     Dynamically increase tolerance if no Pokémon is found.
-    :param height: Height of the Pokémon in meters.
+    :param height: Height of the Pokémon in centimeters.
     :param weight: Weight of the Pokémon in kilograms.
     :param tolerance: Initial percentage tolerance for matching height and weight.
     :return: List of Pokémon with similar height and weight.
@@ -48,14 +48,14 @@ def find_pokemon_body(height: float, weight: float, tolerance: float = 0.1):
     while not nearby_pokemon and current_tolerance <= 1.0:  # Cap tolerance at 100%
         for pokemon in all_pokemon:
             try:
-                pokemon_height = float(pokemon["height"])
+                pokemon_height_cm = float(pokemon["height"]) * 100  # Convert Pokémon height to centimeters
                 pokemon_weight = float(pokemon["weight"])
 
-                if (abs(pokemon_height - height) / height <= current_tolerance and
+                if (abs(pokemon_height_cm - height) / height <= current_tolerance and
                         abs(pokemon_weight - weight) / weight <= current_tolerance):
                     nearby_pokemon.append({
                         "name": pokemon["pokemon_name"],
-                        "height": pokemon_height,
+                        "height": pokemon_height_cm,  # Keep height in centimeters
                         "weight": pokemon_weight
                     })
             except (KeyError, ValueError) as e:
