@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who That Pokemon</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Welcome to Who That Pokemon!</h1>
+    <!-- Form for searching by Pokémon name -->
+    <form id="search-by-name" method="get" action="/">
+        <label for="name">Enter Pokémon Name:</label>
+        <input type="text" id="name" name="name" placeholder="e.g., Pikachu" value="{{ request.query_params.get('name', '') }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Form for searching by height and weight -->
+    <form id="search-by-body" method="get" action="/">
+        <label for="height">Enter Height (m):</label>
+        <input type="number" id="height" name="height" step="0.01" placeholder="e.g., 1.0" value="{{ request.query_params.get('height', '') }}">
+        <label for="weight">Enter Weight (kg):</label>
+        <input type="number" id="weight" name="weight" step="0.1" placeholder="e.g., 10.0" value="{{ request.query_params.get('weight', '') }}">
+        <button type="submit">Find Nearby Pokémon</button>
+    </form>
+
+    {% if pokemon_data %}
+        <div class="pokemon-result">
+            <h2>Pokémon Found:</h2>
+            <p><strong>Name:</strong> {{ pokemon_data.name }}</p>
+            <p><strong>Type:</strong> {{ pokemon_data.type }}</p>
+            {% if pokemon_data.height and pokemon_data.weight %}
+                <p><strong>Height:</strong> {{ pokemon_data.height }} m</p>
+                <p><strong>Weight:</strong> {{ pokemon_data.weight }} kg</p>
+            {% endif %}
+            <img src="{{ pokemon_data.image_url }}" alt="Image of {{ pokemon_data.name }}" class="pokemon-image">
+        </div>
+    {% elif pokemon_data is none and request.query_params.get('name') %}
+        <p class="error">Pokémon not found. Please try again.</p>
+    {% endif %}
+    {% if random_pokemon %}
+        <div class="random-pokemon" id="random-pokemon">
+            <h2>{{ random_pokemon.name }}</h2>
+            <p><strong>Height:</strong> {{ random_pokemon.height }} m</p>
+            <p><strong>Weight:</strong> {{ random_pokemon.weight }} kg</p>
+            <img id="random-pokemon-image" src="{{ random_pokemon.image_url }}" alt="Image of {{ random_pokemon.name }}" class="pokemon-image">
+        </div>
+    {% endif %}
+    {% if error_message %}
+        <p class="error">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>

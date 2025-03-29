@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: #0078d7;
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+}
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form input, form button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+form input[type="number"] {
+    width: 100px;
+}
+
+.pokemon-result {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.error {
+    text-align: center;
+    color: red;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.pokemon-image {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%; /* Ensure the image adapts to the container width */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: contain; /* Ensure the image fits within the container */
+    border: 2px solid #0078d7;
+    border-radius: 10px;
+}
+
+.random-pokemon {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    width: auto; /* Allow the width to adjust based on content */
+    height: auto; /* Allow the height to adjust based on content */
+    border: 2px dashed #0078d7;
+    border-radius: 10px;
+    background-color: #eaf4ff;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto; /* Center the section */
+    overflow: visible; /* Ensure no content is hidden */
+}
+
+.random-pokemon img {
+    display: block;
+    margin: 10px auto;
+    max-width: 150px;
+    height: auto;
+    border: 2px solid #0078d7;
+    border-radius: 10px;
+}
+
+.random-pokemon button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.random-pokemon button:hover {
+    background-color: #005bb5;
+}
+
+.random-pokemon p {
+    margin: 5px 0;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-top: 30px;
+    }
+
+    form {
+        margin-top: 15px;
+    }
+
+    form input, form button {
+        padding: 8px;
+        margin: 5px;
+        font-size: 14px;
+    }
+
+    form input[type="number"] {
+        width: 80px;
+    }
+
+    .pokemon-result, .random-pokemon {
+        margin-top: 20px;
+        padding: 10px;
+        width: 90%; /* Adjust width for smaller screens */
+        max-width: 300px; /* Limit the maximum width */
+        margin-left: auto;
+        margin-right: auto; /* Center the section */
+    }
+
+    .pokemon-image {
+        margin: 10px auto;
+        max-width: 100%; /* Ensure the image adapts to the container width */
+        height: auto; /* Maintain the aspect ratio */
+    }
+
+    .random-pokemon {
+        width: 90%; /* Adjust width for smaller screens */
+        height: auto; /* Allow height to adjust based on content */
+    }
+
+    .random-pokemon img {
+        max-width: 100%; /* Ensure the image adapts to the container width */
+        height: auto; /* Maintain the aspect ratio */
+    }
+
+    .error {
+        font-size: 14px;
+    }
+}
