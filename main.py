@@ -89,4 +89,4 @@ async def nearby_pokemon(
     return JSONResponse(content={"error": "No Pokémon found with similar height and weight"}, status_code=404)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
