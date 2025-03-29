@@ -8,12 +8,6 @@
 </head>
 <body>
     <h1>Welcome to Who That Pokemon!</h1>
-    <!-- Form for searching by Pokémon name -->
-    <form id="search-by-name" method="get" action="/">
-        <label for="name">Enter Pokémon Name:</label>
-        <input type="text" id="name" name="name" placeholder="e.g., Pikachu" value="{{ request.query_params.get('name', '') }}">
-        <button type="submit">Search</button>
-    </form>
 
     <!-- Form for searching by height and weight -->
     <form id="search-by-body" method="get" action="/">
